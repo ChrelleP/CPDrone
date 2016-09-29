@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "Connecting to CPDrone..."
+echo "-------------------------"
+echo "Setting up and joining adhoc CPDrone"
+
+sudo service network-manager stop
+sudo ifconfig wlan0 up
+sudo iw wlan0 set type ibss
+sudo iw wlan0 ibss join CPDrone 2412
+sudo avahi-autoipd wlan0 &
